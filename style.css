@@ -7,6 +7,7 @@
 }
 html{
      font-size: 62.5%;
+     overflow-x: hidden;
 }
 body{
      font-family: 'Poppins', sans-serif;
@@ -19,7 +20,6 @@ h2{
 }
 h3{
      font-size: 3rem;
-     font-weight: normal ;
 }
 h4,
 h5{
@@ -27,9 +27,9 @@ h5{
 }
 li,
 button,
-label,
+p,
 input,
-p{
+label{
      font-size: 2rem;
 }
 
@@ -41,53 +41,59 @@ ul{
      list-style: none;
 }
 button{
-     padding: 2rem 6rem;
-     background: #4c6e97;
+     padding: 2rem 4rem;
      border: none;
+     background-color: #254975;
      color: white;
-     font-size: 1.8rem;
+     font-weight: bolder;
      cursor: pointer;
-     font-weight: bold;
-     transition: background 0.5s ease-in-out;
-     margin-bottom: 2rem;
+     transition: background .5s ease-in-out;
 }
 button:hover{
-     background: #27394e;
+     background: #131c27;
 }
 
 /* Nav Section with Hero */
 .main-head{
      background-color: #131c27;
      color: white;
-     position: sticky;
+     position: fixed;
      top: 0;
+     right: 0;
+     width: 100%;
      z-index: 1;
+     transition: opacity .5s ease-out;
 }
-nav{
+.navbar{
      display: flex;
-     padding: 2rem;
      min-height: 10vh;
+     padding: 2rem 0;
+     justify-content: center;
+     align-items: center;
      width: 90%;
      margin: auto;
      flex-wrap: wrap;
-     align-items: center;
 }
-nav ul{
+.navbar nav{
      flex: 1 1 27.5rem;
-     display: flex;
-     justify-content: space-around;
 }
 #logo{
      flex: 2 1 27.5rem;
      font-family: "Pattaya", sans-serif;
      font-weight: 400;
 }
+
+nav ul{
+     display: flex;
+     justify-content: space-around;
+}
 .hero{
-     min-height: 90vh;
-     background: linear-gradient(rgba(0,0,0, .8), transparent),url('./img/landing-page.jpg');
+     min-height: 100vh;
+     padding-top: 15vh;
+     background: linear-gradient(rgba(0,0,0, .6), transparent),url('./img/landing-page.jpg');
      background-position: center;
      background-repeat: no-repeat;
-     background-size: cover;
+     background-size: cover;  
 
      color: white;
      display: flex;
@@ -96,16 +102,21 @@ nav ul{
      align-items: center;
      text-align: center;
 }
+.hero h2{
+     margin-bottom: 3rem;
+}
 .hero h3{
-     padding: 4rem;
+     margin-bottom: 2rem;
 }
 
 /* Locations Section */
-#locations{
+.locations{
      min-height: 100vh;
-     background: linear-gradient(rgba(0,0,0, .5), transparent ), url("./img/new-york-page.png");
+     background: linear-gradient(rgba(0,0,0, .6), transparent ), url("./img/new-york-page.png");
+     background-repeat: no-repeat;
      background-position: center;
      background-size: cover;
+
      display: flex;
      position: relative;
      overflow: hidden;
@@ -115,14 +126,16 @@ nav ul{
      margin: auto;    
 }
 .locations-head h2{
-     padding: 1rem 0;
+     margin: 2rem 0;
      text-decoration: underline;
      /*! Eto es para aumentar el grosor del underline */
      text-decoration-thickness: 0.5rem;
+     color: black;
+
 }
 .locations-head h3{
-     padding: 4rem 0;
-     background: linear-gradient( #131c27, #663b34);
+     margin: 4rem 0;
+     background: linear-gradient(to right ,#f0f1f3, #faf0ee);
      /*! Lo que hace esta propiedad es definirle el alcance de nuestr4o background como border-box, content-box o el mismo texto */
      background-clip: text;
      /*! Especifica el color de relleno del texto */
@@ -134,67 +147,89 @@ nav ul{
      right: 0;
      height: 60vh;
 }
-/*! Para alternate por lo menos necesitas 2 rondas del keyframe, xq el alternate lo toma al reves de 100 al 0% */
+/*! Para alternate por lo menos necesitas 2 rondas del keyframe, de from a to, luego de to a from */
 .moving-cloud-1{
      animation: cloudAnimation 3s infinite alternate ease-in-out;
 }
-/*! El color que se ve en la nuve 2 es por la opacidiad del background de la secccion osea esta detras , en cambio la priemra imagen esta por delante es por eso que se ve normal*/
+/*! El color que se ve en la nube 2 es por el linear gradient que pusiste de fondo del tag de la secccion padre osea esta detras.*/
 .moving-cloud-2{
      top: 15%;
      z-index: -1;
-     opacity: 0.5;
      animation: cloudAnimation 3.5s infinite alternate ease-in-out;
 }
 
-/* Benefits Section */
+/*KeyFrames*/
+@keyframes cloudAnimation {
+     from {
+          transform: translate(10%, -10%);
+     }
 
+     to {
+          transform: translate(0%, 0%);
+     }
+
+     /* 0%{
+          background: lightblue;
+     }
+     25%{
+          background: rgb(35,98,119);
+     }
+     100%{
+          background: rgb(99, 35, 119);
+     } */
+}
+
+
+
+/* Benefits Section */
 .benefits-head{
      background: #343c44;
-     padding: 3rem;
      min-height: 30vh;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
+     padding: 3rem 1rem;
      color: white;
      text-align: center;
 }
 .benefits-head h3{
-     padding: 1rem;
+     margin: 1rem 0;
 }
 .cards{
+     padding: 1rem 0;
      width: 90%;
      margin: auto;
      display: flex;
      flex-wrap: wrap;
-     align-items: center;
      min-height: 70vh;
+     align-items: center;
 } 
 .card{
      flex: 1 1 25rem;
-     min-height: 35vh;
-     margin: 2rem 5rem;
+     margin: 2rem 3rem;
      text-align: center;
      box-shadow: 0px 10px 10px rgba(0, 0, 0, .1), 0px 20px 20px rgba(0, 0, 0, .1);
 }
 .card-icon{
      background: #27394e;
+     padding: 2rem 0;
 }
 /*! Lo que ocurre aqui es que svg es diferente a un png poque no hace caos a un width 100%, po reso le bajas mucho */
 .card img{
-     margin: 2rem;
      width: 20%;
 }
-.card h4,
+.card-body{
+     padding: 2rem;
+}
+.card h4{
+     margin-bottom: 1rem;
+}
 .card p{
-     padding: 1rem;
+     line-height: 1.5;
 }
 
 /* Contact Section */
-#contact{
+.contact{
      min-height: 100vh;
-     background: linear-gradient(rgba(0,0,0,.8), transparent), url("./img/contact-mountain.png");
-     /*! En este caso no lo pone center porque se ve feo asi que tienes que evaluar antes */
+     background: linear-gradient(rgba(0,0,0,.6), transparent), url("./img/contact-mountain.png");
+     background-position: center;
      background-size: cover;
      background-repeat: no-repeat;
      display: flex;
@@ -207,17 +242,19 @@ nav ul{
      text-align: center;
      color: white;
      overflow: hidden;
-
 }
 .form-head{
-     padding: 2rem;
+     padding: 2rem 0;
 }
-.email-form,
-.name-form{
-     padding: 3rem;
+.form{
+     padding: 0rem 2rem;
 }
+.field{
+     margin: 2rem 0;
+}
+
 .form-wrapper label{
-     margin: 0rem 3rem;
+     margin: 0rem 2rem;
 }
 .form-wrapper input{
      padding: 1rem;
@@ -225,8 +262,11 @@ nav ul{
 }
 .form-wrapper button{
      width: 100%;
-     margin-bottom: 0;
      margin-top: 3rem;
+}
+
+ button:focus{
+     outline: .5rem solid cornflowerblue;
  }
 
  /* Footer Section */
@@ -252,50 +292,38 @@ nav ul{
       justify-content: space-around;
       align-items: center;
  }
- /*KeyFrames*/
-@keyframes cloudAnimation {
-     from{  
-          transform: translate(10%, -10%); 
-     }
-     to{
-          transform: translate(0%, 0%);
-     }
-     /* 0%{
-          background: lightblue;
-     }
-     25%{
-          background: rgb(35,98,119);
-     }
-     100%{
-          background: rgb(99, 35, 119);
-     } */
-}
+ 
 
 
 /* Media Queries */
 @media screen and (max-width: 700px){
-     nav{
-          text-align: center;
-     }
-     /* !Lo mejor no es poner un margin botton ni nada cuando esta en modo celular, lo mejor es poner un padding asi de simple sin una direccion por que de esta manera si podra centrarme con text-align*/
-     #logo{
-          padding: 2rem;
-     }
-     /* !Aqui lo que ocurre por el clip es que me hace background de todo para eso usamos lu otro  */
-     .locations-head h3 {
-          /*! herramienta para convertir hex a rgb*/
-           background: rgba(19,28,39, .8);
-           padding: 1rem;
-          -webkit-text-fill-color: white;
-     }
+
      html {
           font-size: 45%;
      }
-     .form-wrapper{
-          width: 80%;
+     .form-wrapper {
+      width: 80%;
      }
-     .footer-wrapper {
-         text-align: center;
+     #logo{
+          padding: 2rem;
      }
+     .locations{
+          padding-top: 10vh;
+     }
+    
+     .locations-head h3 {
+           background: rgba(19,28,39, .8);
+           padding: 1rem;
+           color: white;
+          -webkit-text-fill-color: white;
+     }   
 }
 
+@media screen and (max-width: 450px){
+     .footer-wrapper h5 {
+          text-align: center;
+     }
+  #logo {
+       text-align: center;
+  }
+}
