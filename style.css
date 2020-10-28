@@ -211,7 +211,6 @@ nav ul{
      background: #27394e;
      padding: 2rem 0;
 }
-/*! Lo que ocurre aqui es que svg es diferente a un png poque no hace caos a un width 100%, po reso le bajas mucho */
 .card img{
      width: 20%;
 }
@@ -232,7 +231,7 @@ nav ul{
      background-position: center;
      background-size: cover;
      background-repeat: no-repeat;
-     display: flex;
+     display: flex; 
 }
 .form-wrapper{
      width: 60%;
@@ -305,7 +304,7 @@ nav ul{
       width: 80%;
      }
      #logo{
-          padding: 2rem;
+          padding: 2rem 0;
      }
      .locations{
           padding-top: 10vh;
@@ -323,7 +322,7 @@ nav ul{
      .footer-wrapper h5 {
           text-align: center;
      }
-  #logo {
-       text-align: center;
-  }
+     #logo {
+          text-align: center;
+     }
 }

@@ -14,7 +14,7 @@ window.onscroll = function(){
      const y = this.scrollY;
      const main_head = document.querySelector('.main-head');
      if(y > 0){
-          main_head.style.opacity = "0.5";
+          main_head.style.opacity = "0.6";
      }else{
           main_head.style.opacity = "1";
      }
